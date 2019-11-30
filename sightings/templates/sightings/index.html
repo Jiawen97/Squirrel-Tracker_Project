@@ -1,0 +1,15 @@
+<ul>
+        <li><a href='/sightings/add/'>Add</a></li>
+
+{% for squirrel in sightings %}
+
+	<li>{{ squirrel.Unique_Squirrel_ID }}<a href='/sightings/{{squirrel.Unique_Squirrel_ID}}'>Edit</a></li>
+
+
+{% endfor %}
+
+
+
+
+
+</ul>
