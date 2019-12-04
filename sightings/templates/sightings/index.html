@@ -11,11 +11,11 @@
 	<a href='{%url 'sightings:add'%}'>Add new squirrel sighting</a>
 
         <h3>Unique_Squirrel_ID of all sightings </h3>
-            {%if Squirrel%}
+            {%if sightings%}
                 <ul>
-                    {%for squirrel in Squirrel%}
+                    {%for squirrel in sightings%}
                         <li>{{squirrel}}
-			<a href='/sightings/{{squirrel.unique_squirrel_id}}/'>See details and update or delete it </a>
+			<a href='/sightings/{{squirrel.Unique_Squirrel_ID}}/'>See details and update or delete it </a>
 			</li>
 		    {%endfor%}
                 </ul>

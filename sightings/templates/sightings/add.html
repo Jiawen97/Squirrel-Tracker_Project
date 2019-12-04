@@ -2,20 +2,15 @@
 <html>
     <head>
     <title>Add a new squirrel sighting</title>
-    
     </head>
-
     <body>
-       
         <h1>Add a new squirrel sighting</h1>
         <form action="" method="POST">
-
-
         {% csrf_token %}
 	<ul>
-	<li>Latitude:<input type='number' name='latitude'>
+	<li>Latitude:<input type='number' step=any name='latitude'>
 	</li>
-	<li>Longitude:<input type="number" name="longitude">
+	<li>Longitude:<input type="number" step=any name="longitude">
 	</li>
 	<li>Unique_Squirrel_ID:<input type="text" name="unique_squirrel_id">
 	</li>
@@ -28,7 +23,7 @@
                 <input type="radio" name="age" value="Juvenile">Juvenile
 		<input type="radio" name="age" value="Other">Other
         </li>
-        <li>Primary_Fur_Color:<input type="radio" name="primary_fur_color" value="Gray">Gray
+       <li>Primary_Fur_Color:<input type="radio" name="primary_fur_color" value="Gray">Gray
 	                      <input type="radio" name="primary_fur_color" value="Cinnamon">Cinnamon
 			      <input type="radio" name="primary_fur_color" value="Black">Black
 			      <input type="radio" name="primary_fur_color" value="Other">Other
@@ -84,7 +79,7 @@
 	<br>
         <input type="submit" value="Add">
         <!-- returns to users page (index.html) -->
-        <a href="{% url 'sightings:index'%}">Go to main page</a>
+        <a href='{% url 'sightings:index'%}'>Go to main page</a>
         </form>
     </body>
 </html>
