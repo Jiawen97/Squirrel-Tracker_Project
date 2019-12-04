@@ -1,0 +1,19 @@
+  
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Delete page
+		</title>
+	</head>
+	<body>
+		<form method="POST"> 
+		 {% csrf_token %}
+		<h2>Squirrel ID:{{ unique_squirrel_id }} </h2>
+		<h2>If you want to delete this squirrel sighting, please click this</h2>
+ 
+	
+		<input type = "submit" value="Delete">
+		<a href="{% url 'sightings:index' %}"> Go to main page</a>
+		</form>
+	</body>
+</html>

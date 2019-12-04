@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title> Update page
+    </title>
+
+    </head>
+    <body>
+        <h1>Update a squirrel sighting</h1>
+	<form action="{% url 'sightings:update' unique_squirrel_id=squirrel.unique_squirrel_id %}" method="POST">
+        {% csrf_token %}
+        <ul>
+	<li>Update page for {{ squirrel.unique_squirrel_id }}
+	</li>
+	<li>Latitude:<input type='number' name='latitude' value={{squirrel.latitude}}>
+        </li>
+	<li>Longitude:<input type="number" name="longitude" value={{squirrel.longitude}}>
+        <li>Shift:<input type="radio" name="shift" value="AM">AM
+		<input type="radio" name="shift" value="PM" checked>PM
+	<!--	{% for choice in squirrel.shift %}
+	    <input type="radio" name="shift" value={{choice.0}}"
+			 {% ifequal squirrel.shift choice.0 %}{{choice}}
+	            checked="checked"
+	        {% endifequal %}/>
+	    <label for="">{{choice.1}}</label>
+	    {% endfor %}-->
+        </li>
+	<li>Date:<input type="date" name="date" value={{squirrel.date}}>
+        </li>
+        <li>Age:<input type="radio" name="age" value="Adult">Adult
+                <input type="radio" name="age" value="Juvenile">Juvenile
+                <input type="radio" name="age" value="Other" checked>Other
+        </li>
+	<li>Primary_Fur_Color:<input type="radio" name="primary_fur_color" value="Gray">Gray
+                              <input type="radio" name="primary_fur_color" value="Cinnamon">Cinnamon
+                              <input type="radio" name="primary_fur_color" value="Black">Black
+                              <input type="radio" name="primary_fur_color" value="Other" checked>Other
+        </li>
+        <li>Location:<input type="radio" name="location" value="Above Ground">Above Ground
+                     <input type="radio" name="location" value="Ground Plane">Ground Plane
+                     <input type="radio" name="location" value="Other" checked>Other
+        </li>
+	<li>Specific_Location:<input type="text" name="specific_location" value={{squirrel.specific_location}}>
+        </li>
+        <li>Running:<input type="radio" name="running" value="True">True
+                    <input type="radio" name="running" value="False" checked>False
+        </li>
+        <li>Chasing:<input type="radio" name="chasing" value="True">True
+                    <input type="radio" name="chasing" value="False" checked>False
+        </li>
+        <li>Climbing:<input type="radio" name="climbing" value="True">True
+                     <input type="radio" name="climbing" value="False" checked>False
+        </li>
+        <li>Eating:<input type="radio" name="eating" value="True">True
+                   <input type="radio" name="eating" value="False" checked>False
+        </li>
+        <li>Foraging:<input type="radio" name="foraging" value="True">True
+                     <input type="radio" name="foraging" value="False" checked>False
+        </li>
+	<li>Other_Activities:<input type="text" name="other_activities" value={{squirrel.other_activities}}>
+        </li>
+        <li>Kuks:<input type="radio" name="kuks" value="True">True
+                 <input type="radio" name="kuks" value="False" checked>False
+        </li>
+        <li>Quaas:<input type="radio" name="quaas" value="True">True
+                  <input type="radio" name="quaas" value="False" checked>False
+        </li>
+        <li>Moans:<input type="radio" name="moans" value="True">True
+                  <input type="radio" name="moans" value="False" checked>False
+        </li>
+        <li>Tail_Flags:<input type="radio" name="tail_flags" value="True">True
+                       <input type="radio" name="tail_flags" value="False" checked>False
+        </li>
+        <li>Tail_Twitches:<input type="radio" name="tail_twitches" value="True">True
+		          <input type="radio" name="tail_twitches" value="False" checked>False
+        </li>
+        <li>Approaches:<input type="radio" name="approaches" value="True">True
+                       <input type="radio" name="approaches" value="False" checked>False
+        </li>
+        <li>Indifferent:<input type="radio" name="indifferent" value="True">True
+                        <input type="radio" name="indifferent" value="False" checked>False
+        </li>
+        <li>Runs_From:<input type="radio" name="runs_from" value="True">True
+                 <input type="radio" name="runs_from" value="False" checked>False
+        </li>
+        </ul>
+        <br>
+        <input type="submit" value="Update">
+        <!-- returns to users page (index.html) -->
+        <a href="{% url 'sightings:index'%}">Go to main page</a>
+        </form>
+    </body>
+</html>
