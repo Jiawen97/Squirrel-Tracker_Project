@@ -9,6 +9,6 @@ urlpatterns = [
         path('add/',views.add,name="add"),
         path('<Unique_Squirrel_ID>/delete/',views.delete,name="delete"),
         path('stats/',views.stats,name="stats"),
-        path('<Unique_Squirrel_ID>/details/',views.details,name="details")
+        path('<Unique_Squirrel_ID>/details/',views.details,name="details"),
 
 ]

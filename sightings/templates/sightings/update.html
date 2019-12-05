@@ -7,14 +7,14 @@
     </head>
     <body>
         <h1>Update a squirrel sighting</h1>
-	<form action="{% url 'sightings:update' unique_squirrel_id=squirrel.unique_squirrel_id %}" method="POST">
+	<form action="{% url 'sightings:update' Unique_Squirrel_ID=squirrel.Unique_Squirrel_ID %}" method="POST">
         {% csrf_token %}
         <ul>
-	<li>Update page for {{ squirrel.unique_squirrel_id }}
+	<li>Update page for {{ squirrel.Unique_Squirrel_ID }}
 	</li>
-	<li>Latitude:<input type='number' name='latitude' value={{squirrel.latitude}}>
+	<li>Latitude:<input type='number' name='latitude' value={{squirrel.Latitude}}>
         </li>
-	<li>Longitude:<input type="number" name="longitude" value={{squirrel.longitude}}>
+	<li>Longitude:<input type="number" name="longitude" value={{squirrel.Longitude}}>
         <li>Shift:<input type="radio" name="shift" value="AM">AM
 		<input type="radio" name="shift" value="PM" checked>PM
 	<!--	{% for choice in squirrel.shift %}
@@ -25,7 +25,7 @@
 	    <label for="">{{choice.1}}</label>
 	    {% endfor %}-->
         </li>
-	<li>Date:<input type="date" name="date" value={{squirrel.date}}>
+	<li>Date:<input type="date" name="date" value={{squirrel.Date}}>
         </li>
         <li>Age:<input type="radio" name="age" value="Adult">Adult
                 <input type="radio" name="age" value="Juvenile">Juvenile
@@ -40,7 +40,7 @@
                      <input type="radio" name="location" value="Ground Plane">Ground Plane
                      <input type="radio" name="location" value="Other" checked>Other
         </li>
-	<li>Specific_Location:<input type="text" name="specific_location" value={{squirrel.specific_location}}>
+	<li>Specific_Location:<input type="text" name="specific_location" value={{squirrel.Specific_Location}}>
         </li>
         <li>Running:<input type="radio" name="running" value="True">True
                     <input type="radio" name="running" value="False" checked>False
@@ -57,7 +57,7 @@
         <li>Foraging:<input type="radio" name="foraging" value="True">True
                      <input type="radio" name="foraging" value="False" checked>False
         </li>
-	<li>Other_Activities:<input type="text" name="other_activities" value={{squirrel.other_activities}}>
+	<li>Other_Activities:<input type="text" name="other_activities" value={{squirrel.Other_Activities}}>
         </li>
         <li>Kuks:<input type="radio" name="kuks" value="True">True
                  <input type="radio" name="kuks" value="False" checked>False

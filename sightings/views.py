@@ -39,10 +39,11 @@ def update(request,Unique_Squirrel_ID):
         squirrel.Indifferent=request.POST['indifferent']
         squirrel.Runs_from=request.POST['runs_from']
         squirrel.save()
-        context={'squirrel':squirrel}
+        context={'squirrel':squirrel,}
         return render(request,'sightings/details.html',context)
-    context={'squirrel':squirrel}
-    return render(request,'sightings/update.html',context)
+    else:
+        context={'squirrel':squirrel,}
+        return render(request,'sightings/update.html',context)
 
 def add(request):
     if request.method=="POST":
