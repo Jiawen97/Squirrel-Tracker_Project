@@ -78,7 +78,7 @@ def add(request):
             return render(request,'sightings/add.html')
 
 def delete(request,Unique_Squirrel_ID):
-    squirrel = Squirrel.objects.get(Unique_Squirrel_ID=Unique_Squirrel_ID) 
+    squirrel = sightings.objects.get(Unique_Squirrel_ID=Unique_Squirrel_ID) 
     if request.method =="POST":
         squirrel.delete()
         return redirect('sightings:index')
@@ -99,3 +99,8 @@ def stats(request):
             'sightings_stats5':sightings_stats5,
             }
     return render(request, 'sightings/stats.html', context)
+
+def details(request,Unique_Squirrel_ID):
+    squirrel = sightings.objects.get(Unique_Squirrel_ID=Unique_Squirrel_ID)
+    context = {'squirrel':squirrel,}
+    return render(request,'sightings/details.html',context)

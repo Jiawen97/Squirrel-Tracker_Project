@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title> This is {{ sightings.Unique_Squirrel_ID }} details page</title>
+	</head>
+
+	<body>
+		<ul>
+			<li>Latitude: {{ squirrel.Latitude }}</li>
+			<li>Longtitude: {{ squirrel.Longtitude }}</li>
+			<li>Unique_Squirrel_ID: {{ squirrel.Unique_Squirrel_ID }}</li>
+			<li>Shift: {{ squirrel.Shift }}</li>
+			<li>Date: {{ squirrel.Date }}</li>
+			<li>Age: {{ squirrel.Age }}</li>
+			<li>Primary Fur Color: {{ squirrel.Primary_Fur_Color }}</li>
+			<li>Location: {{ squirrel.Location }}</li>
+			<li>Specific Location: {{ squirrel.Specific_Location }}</li>
+			<li>Running: {{ squirrel.Running }}</li>
+			<li>Chasing: {{ squirrel.Chasing }}</li>
+			<li>Climbing: {{ squirrel.Climbing }}</li>
+			<li>Eating: {{ squirrel.Eating }}</li>
+			<li>Foraging: {{ squirrel.Foraging }}</li>
+			<li>Other Activities: {{ squirrel.Other_Activities }}</li>
+			<li>Kuks: {{ squirrel.Kuks }}</li>
+			<li>Quaas: {{ squirrel.Quaas }}</li>
+			<li>Moans: {{ squirrel.Moans }}</li>
+			<li>Tail Flags: {{ squirrel.Tail_flags }}</li>
+			<li>Tail Twitches: {{ squirrel.Tail_twitches }}</li>
+			<li>Approaches: {{ squirrel.Approaches }}</li>
+			<li>Indifferent: {{ squirrel.Indifferent }}</li>
+			<li>Runs From: {{ squirrel.Runs_From }}</li>
+		</ul>
+		<a href="{% url 'sightings:delete' Unique_Squirrel_ID=squirrel.Unique_Squirrel_ID%}">Delete this sighting</a
+><br>
+	        <a href="{% url 'sightings:update' Unique_Squirrel_ID=squirrel.Unique_Squirrel_ID%}">Update info</a><br>
+		<a href="{% url 'sightings:index'%}"> Go to main page</a>
+
+	</body>
+</html>
