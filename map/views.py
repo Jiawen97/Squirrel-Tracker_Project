@@ -1,8 +1,6 @@
 from django.shortcuts import render
-from .models import sightings
-
-def index(request):
-    longitude = [Longitude for Longitude in sightings.objects.all()]
-    latitude = [Latitude for Latitude in sightings.objects.all()]
-    context = {longitude, latitude,}
+from sightings.models import sightings
+def index(request): 
+    list_all=sightings.objects.all() 
+    context = {'list_all':list_all,} 
     return render(request,'map/index.html',context)

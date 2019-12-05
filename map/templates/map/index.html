@@ -1,71 +1,22 @@
-<head>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css "integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-
-
-
-<style>
-
-#my-map {
-
-	width:960px;
-
-	height:500px;
-
-}
-
-</style>
-
-</head>
-
-
-
-<body>	<div id="my-map"></div>
-
-<script>
-
-
-
-var locations = [
-
-{% for obj in list_all %}
-
-    [{{ obj.Latitude }}, {{ obj.Longitude }}],
-
-{% endfor %}
-
-
-
-]
-
-
-
-
-
-var map = L.map('my-map').setView([40.79924,-73.95657], 8);
-
-
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-
-}).addTo(map);
-
-
-
-for (var i = 0; i < locations.length; i++) {
-
-	marker = new L.marker([locations[i][0],locations[i][1]]).addTo(map);
-
-		}
-
-
-
+!DOCTYPE html>
+<html>
+	<head> 
+		<title>Sample Squirrel Map</title> 
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/> 
+		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+	</head> 
+	<body> 
+		<div id="map" style="width: 600px; height: 400px">
+		</div> 
+		<script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js"> 
+</script> 
+<script> var squirrel =[ {% for obj in list_all %}[{{obj.Unique_Squirrel_ID}},{{obj.Latitude}},{{obj.Longitude}}],{% endfor %}]; 
+	var map = L.map('map').setView([40.7940823884086, -73.9561344937861], 8); 
+mapLink = '<a href=" ">OpenStreetMap</a >'; 
+L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 18, }).addTo(map); 
+for (var i = 0; i < squirrel.length; i++) { marker = new L.marker([squirrel[i][1],squirrel[i][2]]) .bindPopup(squirrel[i][0]) .addTo(map); } 
 </script>
-
-</body>
-
+	</body>
 </html>
