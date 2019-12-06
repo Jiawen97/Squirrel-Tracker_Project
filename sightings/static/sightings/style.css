@@ -1,3 +1,11 @@
-body {
-    background: white url("images/background1.gif") no-repeat;
-}
+<style>
+    { margin: 0; padding: 0; }
+
+    html { 
+        background: url('images/background1.gif') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>

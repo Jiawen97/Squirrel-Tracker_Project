@@ -1,7 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import sightings
 from django.http import HttpResponse
 from django.http import Http404
+
+from .forms import sightingsform
 
 def index(request):
     try:
@@ -15,37 +17,16 @@ def index(request):
 
 
 def add(request):
-    if request.method=="POST":
-        if request.POST.get('latitude') and request.POST.get('longitude') and request.POST.get('unique_squirrel_id'):            
-            squirrel=sightings()
-            squirrel.Longitude=request.POST.get('longitude')
-            squirrel.Latitude=request.POST.get('latitude')
-            squirrel.Unique_Squirrel_ID=request.POST.get('unique_squirrel_id')
-            squirrel.Shift=request.POST.get('shift')
-            squirrel.Date=request.POST.get('date')
-            squirrel.Age=request.POST.get('age')
-            squirrel.Primary_Fur_Color=request.POST.get('primary_fur_color')
-            squirrel.Location=request.POST.get('location')
-            squirrel.Specific_Location=request.POST.get('specific_location')
-            squirrel.Running=request.POST.get('running')
-            squirrel.Chasing=request.POST.get('chasing')
-            squirrel.Climbing=request.POST.get('climbing')
-            squirrel.Cating=request.POST.get('eating')
-            squirrel.Foraging=request.POST.get('foraging')
-            squirrel.Other_Activities=request.POST.get('other_activities')
-            squirrel.Kuks=request.POST.get('kuks')
-            squirrel.Quaas=request.POST.get('quaas')
-            squirrel.Moans=request.POST.get('moans')
-            squirrel.Tail_flags=request.POST.get('tail_flags')
-            squirrel.Tail_twitches=request.POST.get('tail_twitches')
-            squirrel.Approaches=request.POST.get('approaches')
-            squirrel.Indifferent=request.POST.get('indifferent')
-            squirrel.Runs_from=request.POST.get('runs_from')
-            squirrel.save()
+    if request.method == "POST":
+        form = sightingsform(request.POST)
+        if form.is_valid():
+            form.save()
             context={'sightings':sightings.objects.all(),}
             return render(request,'sightings/index.html',context)
-    elif request.method=="GET":
-            return render(request,'sightings/add.html')
+    else:
+        form = sightingsform()
+    context = {'form':form}
+    return render(request, 'sightings/update.html',context)
 
 def details(request,Unique_Squirrel_ID):
     squirrel = sightings.objects.get(Unique_Squirrel_ID=Unique_Squirrel_ID)
@@ -68,34 +49,14 @@ def stats(request):
     return render(request, 'sightings/stats.html', context)
 
 def update(request,Unique_Squirrel_ID):
-    squirrel = sightings.objects.get(Unique_Squirrel_ID=Unique_Squirrel_ID)
-    if request.method=="POST":
-        squirrel.Longitude=request.POST['longitude']
-        squirrel.Latitude=request.POST['latitude']
-        squirrel.Shift=request.POST['shift']
-        squirrel.Date=request.POST['date']
-        squirrel.Age=request.POST['age']
-        squirrel.Primary_Fur_Color=request.POST['primary_fur_color']
-        squirrel.Location=request.POST['location']
-        squirrel.Specific_Location=request.POST['specific_location']
-        squirrel.Running=request.POST['running']
-        squirrel.Chasing=request.POST['chasing']
-        squirrel.Climbing=request.POST['climbing']
-        squirrel.Eating=request.POST['eating']
-        squirrel.Foraging=request.POST['foraging']
-        squirrel.Other_activities=request.POST['other_activities']
-        squirrel.Kuks=request.POST['kuks']
-        squirrel.Quaas=request.POST['quaas']
-        squirrel.Moans=request.POST['moans']
-        squirrel.Tail_flags=request.POST['tail_flags']
-        squirrel.Tail_twitches=request.POST['tail_twitches']
-        squirrel.Approaches=request.POST['approaches']
-        squirrel.Indifferent=request.POST['indifferent']
-        squirrel.Runs_from=request.POST['runs_from']
-        squirrel.save()
-        context={'squirrel':squirrel,}
-        return render(request,'sightings/details.html',context)
-    elif request.method=="GET":
-        context={'squirrel':squirrel,}
-        return render(request,'sightings/update.html',context)
-
+    Sightings = get_object_or_404(sightings, Unique_Squirrel_ID=Unique_Squirrel_ID)
+    if request.method == "POST":
+        form = sightingsform(request.POST, instance=Sightings)
+        if form.is_valid():
+            form.save()
+            context={'sightings':sightings.objects.all(),}
+            return render(request,'sightings/index.html',context)
+    else:
+        form = sightingsform(instance=Sightings)
+    context = {'form':form}
+    return render(request, 'sightings/update.html',context)
