@@ -29,8 +29,7 @@
 			<li>Indifferent: {{ squirrel.Indifferent }}</li>
 			<li>Runs From: {{ squirrel.Runs_From }}</li>
 		</ul>
-		<a href="{% url 'sightings:delete' Unique_Squirrel_ID=squirrel.Unique_Squirrel_ID%}">Delete this sighting</a
-><br>
+<br>
 	        <a href="{% url 'sightings:update' Unique_Squirrel_ID=squirrel.Unique_Squirrel_ID%}">Update info</a><br>
 		<a href="{% url 'sightings:index'%}"> Go to main page</a>
 

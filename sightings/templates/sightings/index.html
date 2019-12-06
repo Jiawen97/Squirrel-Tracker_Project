@@ -8,14 +8,19 @@
 
         <h1>Squirrel sightings list</h1>
         <br>
-	<a href='{%url 'sightings:add'%}'>Add new squirrel sighting</a>
+	<a href='{%url 'sightings:stats'%}'>View the stats data</a>
+	<br>
+	<a href='/sightings/add/'>Add new squirrel sighting</a>
 
-        <h3>Unique_Squirrel_ID of all sightings </h3>
+        <h3>Unique_Squirrel_ID of all squirrels' sightings </h3>
             {%if sightings%}
                 <ul>
                     {%for squirrel in sightings%}
                         <li>{{squirrel}}
-			<a href='/sightings/{{squirrel.Unique_Squirrel_ID}}/details'>See details about it </a>
+			<br>
+			<a href='/sightings/{{squirrel.Unique_Squirrel_ID}}/'> Update the information </a>
+			<br>
+			<a href='/sightings/{{squirrel.Unique_Squirrel_ID}}/details'>  See details about it </a>
 			</li>
 		    {%endfor%}
                 </ul>
