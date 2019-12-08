@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import sightings
 from django.http import HttpResponse
 from django.http import Http404
-
 from .forms import sightingsform
+from django.db.models import Avg, Max, Min
 
 def index(request):
     try:
@@ -40,13 +40,14 @@ def stats(request):
     sightings_stats4=sightings.objects.filter(Age='Adult').count()
     sightings_stats5=sightings.objects.filter(Age='Juvenile').count()
     context={
-            'Number of all the sightings':sightings_stats1,
-            'Number of black primary fur color sightings':sightings_stats2,
-            'Number of running sightings':sightings_stats3,
-            'Number of adult sightings':sightings_stats4,
-            'Number of juvenile sightings':sightings_stats5,
+            'Stat1':sightings_stats1,
+            'Stat2':sightings_stats2,
+            'Stat3':sightings_stats3,
+            'Stat4':sightings_stats4,
+            'Stat5':sightings_stats5,
             }
-    return render(request, 'sightings/stats.html', context)
+    return render(request, 'sightings/stats.html', context)    
+
 
 def update(request,Unique_Squirrel_ID):
     Sightings = get_object_or_404(sightings, Unique_Squirrel_ID=Unique_Squirrel_ID)
