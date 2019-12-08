@@ -38,7 +38,6 @@
 <br>
 <h3>Map</h3>
 <p>-In the Map page, users can view the first 50 suirrels at Central Park on the map. Therefore, users can track the known squirrels easily.</p>
-<br>
 <p>-Located at:/map</p>
 <br>
 <h2>The link to the server running our application
