@@ -30,11 +30,11 @@
 <br>
 <p>View Squirrel Details</p>
 <p>By click the link of the certain squirrel on the main page, users can view the detailed information about it. Users can also visit the main page and update page from this page.</p>
-<p>-Located at:/sightings/<unique-squirrel-id>/details</p>
+<p>-Located at:/sightings/&lt;unique-squirrel-id&gt;/details</p>
 <br>
 <p>Update Squirrel Information</p>
 <p>By click the link of the certain squirrel on the main page, users can update any information about this particular squirrel. After updating successfully, users can go back to the main page by the link below.</p>
-<p>-Located at:/sightings/<unique-squirrel-id></p>
+<p>-Located at:/sightings/&lt;unique-squirrel-id&gt;</p>
 <br>
 <h3>Map</h3>
 <p>-In the Map page, users can view the first 50 suirrels at Central Park on the map. Therefore, users can track the known squirrels easily.</p>
@@ -42,8 +42,8 @@
 <br>
 <h2>The link to the server running our application
 </h2>
-<p>To view squirrels detail information:<a href='https://need to update.appspot.com/sightings'>https://need to update.appspot.com/sightings</a></p>
-<p>To view squirrels on the map:<a href='https://need to update.appspot.com/map'>https://need to update.appspot.com/map</a></p>
+<p>To view squirrels detail information:<a href='https://my-project-tools-255500.appspot.com/sightings'>https://my-project-tools-255500.appspot.com/sightings</a></p>
+<p>To view squirrels on the map:<a href='https://my-project-tools-255500.appspot.com/map'>https://my-project-tools-255500.appspot.com/map</a></p>
 <br>
 <h2>Group Information
 </h2>
