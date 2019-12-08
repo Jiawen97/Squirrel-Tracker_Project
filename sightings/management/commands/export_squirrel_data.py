@@ -43,3 +43,9 @@ class Command(BaseCommand):
 
             for row in sightings.objects.all():
                 writer.writerow([getattr(row, attribute) for attribute in attributes])
+
+        self.stdout.write(self.style.SUCCESS('Export Done'))
+
+
+
+
